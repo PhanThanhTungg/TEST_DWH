@@ -1,4 +1,4 @@
-﻿CREATE OR ALTER PROCEDURE bronze.load_bronze AS
+﻿CREATE OR ALTER PROCEDURE "bronze.load_bronze" AS
 BEGIN
 	DECLARE @batch_start_time DATETIME, @batch_end_time DATETIME; 
 	BEGIN TRY
@@ -6,8 +6,8 @@ BEGIN
 		PRINT 'Loading Bronze Layer';
 		PRINT '================================================';
 
-		TRUNCATE TABLE bronze.crm_cust_info;
-		BULK INSERT bronze.crm_cust_info
+		TRUNCATE TABLE "bronze.crm_cust_info";
+		BULK INSERT "bronze.crm_cust_info"
 		FROM 'D:\tung\fourth_year_2\Data warehouse and mining\DWHTEST\DWHCode_test\datasets\source_crm\cust_info.csv'
 		WITH (
 			FIRSTROW = 2,
@@ -15,8 +15,8 @@ BEGIN
 			TABLOCK -- khóa bảng để tăng tốc 
 		);
 		
-		TRUNCATE TABLE bronze.crm_prd_info;
-		BULK INSERT bronze.crm_prd_info
+		TRUNCATE TABLE "bronze.crm_prd_info";
+		BULK INSERT "bronze.crm_prd_info"
 		FROM 'D:\tung\fourth_year_2\Data warehouse and mining\DWHTEST\DWHCode_test\datasets\source_crm\prd_info.csv'
 		WITH (
 			FIRSTROW = 2,
@@ -24,8 +24,8 @@ BEGIN
 			TABLOCK
 		);
 		
-		TRUNCATE TABLE bronze.crm_sales_details;
-		BULK INSERT bronze.crm_sales_details
+		TRUNCATE TABLE "bronze.crm_sales_details";
+		BULK INSERT "bronze.crm_sales_details"
 		FROM 'D:\tung\fourth_year_2\Data warehouse and mining\DWHTEST\DWHCode_test\datasets\source_crm\sales_details.csv'
 		WITH (
 			FIRSTROW = 2,
@@ -33,8 +33,8 @@ BEGIN
 			TABLOCK
 		);
 		
-		TRUNCATE TABLE bronze.erp_loc_a101;
-		BULK INSERT bronze.erp_loc_a101
+		TRUNCATE TABLE "bronze.erp_loc_a101";
+		BULK INSERT "bronze.erp_loc_a101"
 		FROM 'D:\tung\fourth_year_2\Data warehouse and mining\DWHTEST\DWHCode_test\datasets\source_erp\LOC_A101.csv'
 		WITH (
 			FIRSTROW = 2,
@@ -42,8 +42,8 @@ BEGIN
 			TABLOCK
 		);
 		
-		TRUNCATE TABLE bronze.erp_cust_az12;
-		BULK INSERT bronze.erp_cust_az12
+		TRUNCATE TABLE "bronze.erp_cust_az12";
+		BULK INSERT "bronze.erp_cust_az12"
 		FROM 'D:\tung\fourth_year_2\Data warehouse and mining\DWHTEST\DWHCode_test\datasets\source_erp\CUST_AZ12.csv'
 		WITH (
 			FIRSTROW = 2,
@@ -51,8 +51,8 @@ BEGIN
 			TABLOCK
 		);
 		
-		TRUNCATE TABLE bronze.erp_px_cat_g1v2;
-		BULK INSERT bronze.erp_px_cat_g1v2
+		TRUNCATE TABLE "bronze.erp_px_cat_g1v2";
+		BULK INSERT "bronze.erp_px_cat_g1v2"
 		FROM 'D:\tung\fourth_year_2\Data warehouse and mining\DWHTEST\DWHCode_test\datasets\source_erp\PX_CAT_G1V2.csv'
 		WITH (
 			FIRSTROW = 2,
@@ -73,4 +73,4 @@ BEGIN
 	END CATCH
 END
 
--- exec bronze.load_bronze
+exec [bronze.load_bronze]
